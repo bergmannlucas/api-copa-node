@@ -8,7 +8,6 @@ exports.get = () => {
     .find({}, 'name shirtNumber position');
 }
 
-
 exports.getByName = (name) => {
   return Player.findOne({
       name: name

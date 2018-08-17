@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/player-controller');
+const controller = require('../controllers/player.controller');
 const validator = require('express-validation');
 const validate = require('./../validators/player.validate');
 

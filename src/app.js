@@ -14,8 +14,8 @@ mongoose.connect('mongodb://root:lucas1@ds018308.mlab.com:18308/api-copa-node', 
 const Player = require('./models/player');
 
 // Carregando as rotas
-const indexRoute = require('./routes/index-route');
-const playerRoute = require('./routes/player-route');
+const indexRoute = require('./routes/index.route');
+const playerRoute = require('./routes/player.route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
