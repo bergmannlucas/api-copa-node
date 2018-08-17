@@ -11,6 +11,6 @@ router.get('/:name', controller.getByName);
 router.get('/admin/:id', controller.getById);
 router.post('/', validator(validate.post), controller.post);
 router.put('/:id', validator(validate.put), controller.put);
-router.delete('/', controller.delete);
+router.delete('/:id', controller.delete);
 
 module.exports = router;
