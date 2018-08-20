@@ -7,8 +7,10 @@ const schema = new Schema({
   name: String,
   stadium: String,
   players: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Player'
+    player: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Player'
+    }
   }]
 });
 

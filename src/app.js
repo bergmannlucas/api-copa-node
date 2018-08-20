@@ -20,6 +20,7 @@ const User = require('./models/user');
 const indexRoute = require('./routes/index.route');
 const playerRoute = require('./routes/player.route');
 const teamRoute = require('./routes/team.route');
+const userRoute =  require('./routes/user.route');
 
 // Middlewares
 app.use(helmet());
@@ -32,5 +33,6 @@ app.use(bodyParser.urlencoded({
 app.use('/', indexRoute);
 app.use('/players', playerRoute);
 app.use('/teams', teamRoute);
+app.use('/users', userRoute);
 
 module.exports = app;

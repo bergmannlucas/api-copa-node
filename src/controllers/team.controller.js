@@ -1,7 +1,5 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Team = mongoose.model('Team');
 const repository = require('../repositories/team.repository');
 
 exports.get = async(req, res, next) => {
