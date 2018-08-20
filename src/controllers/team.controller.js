@@ -1,8 +1,8 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Player = mongoose.model('Player');
-const repository = require('../repositories/player.repository');
+const Team = mongoose.model('Team');
+const repository = require('../repositories/team.repository');
 
 exports.get = async(req, res, next) => {
   try {
@@ -37,28 +37,28 @@ exports.getById = async(req, res, next) => {
   }
 }
 
-exports.post = async(req, res, next) => {
+exports.create = async(req, res, next) => {
   try {
     await repository.create(req.body);
     res.status(201).send({
-      message: 'Jogador cadastrado com sucesso!'
+      message: 'Time cadastrado com sucesso!'
     });
   } catch(e) {
     res.status(500).send({
-      message: 'Falha ao cadastrar jogador!'
+      message: 'Falha ao cadastrar time!'
     });
   }
 }
 
-exports.put = async(req, res, next) => {
+exports.update = async(req, res, next) => {
   try {
     await repository.update(req.params.id, req.body);
     res.status(200).send({
-      message: 'Jogador atualizado com sucesso!'
+      message: 'Time atualizado com sucesso!'
     });
   } catch(e) {
     res.status(400).send({
-      message: 'Falha ao atualizar jogador!',
+      message: 'Falha ao atualizar time!',
       data: e
     });
   }
@@ -68,11 +68,11 @@ exports.delete = async(req, res, next) => {
   try {
     await repository.delete(req.params.id);
     res.status(200).send({
-      message: 'Jogador removido com sucesso!'
+      message: 'Time removido com sucesso!'
     });
   } catch(e) {
     res.status(400).send({
-      message: 'Falha ao remover jogador!',
+      message: 'Falha ao remover time!',
       data: e
     });
   }

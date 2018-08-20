@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
   name: String,
-  shirtNumber: String,
-  position: String
+  email: String,
+  password: String
 });
 
-module.exports = mongoose.model('Player', schema);
+module.exports = mongoose.model('User', schema);

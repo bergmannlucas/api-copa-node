@@ -1,41 +1,40 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Player = mongoose.model('Player');
+const Team = mongoose.model('Team');
 
 exports.get = async() => {
-  const res = await Player.find({}, 'name shirtNumber position');
+  const res = await Team.find({}, 'name stadium');
   return res;
 }
 
 exports.getByName = async(name) => {
-  const res = await Player.findOne({
+  const res = await Team.findOne({
     name: name
-  }, 'name shirtNumber position');
+  }, 'name stadium');
   return res;
 }
 
 exports.getById = async(id) => {
-  const res = await Player.findById(id);
+  const res = await Team.findById(id);
   return res;
 }
 
 exports.create = async(data) => {
-  let player = new Player(data);
-  await player.save();
+  let team = new Team(data);
+  await team.save();
 };
 
 exports.update = async(id, data) => {
-  await Player
+  await Team
     .findByIdAndUpdate(id, {
       $set: {
         name: data.name,
-        shirtNumber: data.shirtNumber,
-        position: data.position
+        stadium: data.stadium
       }
     });
 };
 
 exports.delete = async(id) => {
-  await Player.findByIdAndRemove(id);
+  await Team.findByIdAndRemove(id);
 };
