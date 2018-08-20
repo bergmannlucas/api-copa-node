@@ -3,29 +3,29 @@
 const mongoose = require('mongoose');
 const Team = mongoose.model('Team');
 
-exports.get = async() => {
+exports.get = async () => {
   const res = await Team.find({}, 'name stadium');
   return res;
 }
 
-exports.getByName = async(name) => {
+exports.getByName = async (name) => {
   const res = await Team.findOne({
     name: name
   }, 'name stadium');
   return res;
 }
 
-exports.getById = async(id) => {
+exports.getById = async (id) => {
   const res = await Team.findById(id);
   return res;
 }
 
-exports.create = async(data) => {
+exports.create = async (data) => {
   let team = new Team(data);
   await team.save();
 };
 
-exports.update = async(id, data) => {
+exports.update = async (id, data) => {
   await Team
     .findByIdAndUpdate(id, {
       $set: {
@@ -35,6 +35,6 @@ exports.update = async(id, data) => {
     });
 };
 
-exports.delete = async(id) => {
+exports.delete = async (id) => {
   await Team.findByIdAndRemove(id);
 };
