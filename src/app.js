@@ -4,12 +4,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const config = require('./config');
 
 const app = express();
 const router = express.Router();
 
 // Conecta ao banco
-mongoose.connect('mongodb://root:lucas1@ds018308.mlab.com:18308/api-copa-node', { useNewUrlParser: true });
+mongoose.connect(config.connectionString, { useNewUrlParser: true });
 
 // Carregando os Models
 const Player = require('./models/player');
