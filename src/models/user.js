@@ -7,7 +7,11 @@ const schema = new Schema({
   name: String,
   email: String,
   password: String,
-  role: String
+  role: {
+    type: String,
+    required: true,
+    default: 'user',
+  }
 });
 
 module.exports = mongoose.model('User', schema);
