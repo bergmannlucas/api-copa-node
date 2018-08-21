@@ -1,6 +1,5 @@
-'use strict';
-
 const mongoose = require('mongoose');
+
 const User = mongoose.model('User');
 
 exports.create = async (data) => {
@@ -11,7 +10,7 @@ exports.create = async (data) => {
 exports.authenticate = async (data) => {
   const res = await User.findOne({
     email: data.email,
-    password: data.password
+    password: data.password,
   });
   return res;
 };

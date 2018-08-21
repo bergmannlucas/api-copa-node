@@ -1,20 +1,19 @@
-'use strict';
-
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   shirtNumber: {
     type: String,
-    required: true
+    required: true,
   },
   position: {
     type: String,
-    required: true
+    required: true,
   },
 });
 

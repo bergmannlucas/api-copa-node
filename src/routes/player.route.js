@@ -1,9 +1,8 @@
-'use strict';
-
 const express = require('express');
-const router = express.Router();
 const controller = require('../controllers/player.controller');
 const authService = require('../services/auth.service');
+
+const router = express.Router();
 
 router.get('/', authService.authorize, controller.get);
 router.get('/:name', authService.authorize, controller.getByName);

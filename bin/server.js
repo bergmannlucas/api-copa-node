@@ -1,5 +1,3 @@
-'use strict';
-
 const app = require('../src/app');
 const http = require('http');
 const debug = require('debug')('nodestr:server');
@@ -16,10 +14,10 @@ console.log('API rodando na porta ' + port);
 
 function normalizePort(val) {
   const port = parseInt(val, 10);
-  if(isNaN(port)) {
+  if (isNaN(port)) {
     return val;
   }
-  if(port >= 0) {
+  if (port >= 0) {
     return port;
   }
   return false;

@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true
+  },
+
+  "extends": "airbnb-base",
+  "plugins": [
+      "import"
+  ],
+  "rules": {
+      "padded-blocks": ["error", { "blocks": "never" }],
+      "class-methods-use-this": 0,
+      "arrow-body-style": 0,
+      "no-console": 0,
+      "no-underscore-dangle": 0,
+      "prefer-promise-reject-errors": 0,
+      "import/first":0,
+      "linebreak-style": [
+        "error",
+        "unix"
+      ]
+    }
+}
