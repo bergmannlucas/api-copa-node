@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Team = mongoose.model('Team');
 
 exports.get = async () => {
-  const res = await Team.find({}, 'name stadium');
+  const res = await Team.find({}, 'name stadium players');
   return res;
 }
 
