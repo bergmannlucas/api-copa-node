@@ -4,6 +4,7 @@ const repository = require('../repositories/user.repository');
 const emailService = require('../services/email.service');
 const md5 = require('md5');
 const authService = require('../services/auth.service');
+const HTTPstatus = require('http-status');
 
 exports.create = async (req, res, next) => {
   try {
@@ -19,11 +20,11 @@ exports.create = async (req, res, next) => {
       global.EMAIL_TMPL.replace('{0}', req.body.name)
     );
 
-    return res.status(201).send({
+    return res.status(HTTPstatus.CREATED).send({
       message: 'Usuário cadastrado com sucesso!'
     });
   } catch (e) {
-    return res.status(500).send({
+    return res.status(HTTPstatus.INTERNAL_SERVER_ERROR).send({
       message: 'Falha ao cadastrar usuário!'
     });
   }
@@ -35,9 +36,9 @@ exports.authenticate = async (req, res, next) => {
       email: req.body.email,
       password: md5(req.body.password + global.SALT_KEY)
     });
-    console.log(user);
+
     if (!user) {
-      return res.status(404).send({ message: 'Usuário ou senha inválida!' });
+      return res.status(HTTPstatus.NOT_FOUND).send({ message: 'Usuário ou senha inválida!' });
     }
 
     const token = await authService.generateToken({
@@ -45,7 +46,7 @@ exports.authenticate = async (req, res, next) => {
       name: user.name
     })
 
-    return res.status(201).send({
+    return res.status(HTTPstatus.CREATED).send({
       token: token,
       data: {
         email: user.email,
@@ -53,7 +54,7 @@ exports.authenticate = async (req, res, next) => {
       }
     });
   } catch (e) {
-    return res.status(500).send({
+    return res.status(HTTPstatus.INTERNAL_SERVER_ERROR).send({
       message: 'Falha ao cadastrar usuário!'
     });
   }
