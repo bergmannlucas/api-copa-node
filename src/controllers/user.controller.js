@@ -13,11 +13,11 @@ exports.create = async (req, res) => {
       roles: req.body.roles,
     });
 
-    emailService.send(
-      req.body.email,
-      'Bem vindo à API da copa',
-      global.EMAIL_TMPL.replace('{0}', req.body.name),
-    );
+    //emailService.send(
+    //  req.body.email,
+    //  'Bem vindo à API da copa',
+    //  global.EMAIL_TMPL.replace('{0}', req.body.name),
+    //);
 
     return res.status(HTTPstatus.CREATED).send({
       message: 'Usuário cadastrado com sucesso!',

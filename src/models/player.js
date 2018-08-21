@@ -14,6 +14,8 @@ const schema = new Schema({
   position: {
     type: String,
     required: true,
+    enum: ['Goleiro', 'Lateral', 'Zagueiro', 'Volante', 'Meio-Campo', 'Atacante'],
+    default: 'Goleiro'
   },
 });
 
