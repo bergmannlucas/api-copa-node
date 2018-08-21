@@ -11,7 +11,8 @@ exports.create = async (req, res, next) => {
     await repository.create({
       name: req.body.name,
       email: req.body.email,
-      password: md5(req.body.password + global.SALT_KEY)
+      password: md5(req.body.password + global.SALT_KEY),
+      roles: ["user"]
     });
 
     emailService.send(
@@ -42,12 +43,46 @@ exports.authenticate = async (req, res, next) => {
     }
 
     const token = await authService.generateToken({
+      id: user._id,
       email: user.email,
-      name: user.name
+      name: user.name,
+      roles: user.roles
     })
 
     return res.status(HTTPstatus.CREATED).send({
       token: token,
+      data: {
+        email: user.email,
+        name: user.name
+      }
+    });
+  } catch (e) {
+    return res.status(HTTPstatus.INTERNAL_SERVER_ERROR).send({
+      message: 'Falha ao cadastrar usuário!'
+    });
+  }
+}
+
+exports.refreshToken = async (req, res, next) => {
+  try {
+    const token = req.body.token || req.query.token || req.headers['x-access-token'];
+    const data = await authService.decodeToken(token);
+
+    const user = await repository.getById(data.id);
+
+    if (!user) {
+      return res.status(HTTPstatus.NOT_FOUND).send({ message: 'Cliente não encontrado!' });
+    }
+
+    const tokenData = await authService.generateToken({
+      id: user._id,
+      email: user.email,
+      name: user.name,
+      roles: user.roles
+    })
+
+    return res.status(HTTPstatus.CREATED).send({
+      token: tokenData,
       data: {
         email: user.email,
         name: user.name

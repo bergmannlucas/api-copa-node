@@ -21,7 +21,7 @@ exports.getById = async (id) => {
 }
 
 exports.create = async (data) => {
-  let team = new Team(data);
+  const team = new Team(data);
   await team.save();
 };
 

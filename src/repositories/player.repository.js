@@ -21,7 +21,7 @@ exports.getById = async (id) => {
 }
 
 exports.create = async (data) => {
-  let player = new Player(data);
+  const player = new Player(data);
   await player.save();
 };
 

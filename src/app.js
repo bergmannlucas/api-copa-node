@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const config = require('./config');
+const cors = require('cors');
 
 const app = express();
 const router = express.Router();
@@ -25,6 +26,8 @@ const userRoute = require('./routes/user.route');
 
 // Middlewares
 app.use(helmet());
+
+app.use(cors());
 
 app.use(bodyParser.json({ limit: '5mb' }));
 app.use(bodyParser.urlencoded({

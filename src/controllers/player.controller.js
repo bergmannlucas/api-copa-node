@@ -36,7 +36,7 @@ exports.getById = async (req, res, next) => {
   }
 }
 
-exports.post = async (req, res, next) => {
+exports.create = async (req, res, next) => {
   try {
     await repository.create(req.body);
     return res.status(HTTPstatus.CREATED).send({
@@ -49,7 +49,7 @@ exports.post = async (req, res, next) => {
   }
 }
 
-exports.put = async (req, res, next) => {
+exports.update = async (req, res, next) => {
   try {
     await repository.update(req.params.id, req.body);
     return res.status(HTTPstatus.OK).send({

@@ -12,12 +12,7 @@ const schema = new Schema({
     type: String,
     required: true
   },
-  players: [{
-    player: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Player'
-    }
-  }]
+  players: [{ type: Schema.Types.ObjectId, ref: 'Player' }]
 });
 
 module.exports = mongoose.model('Team', schema);
