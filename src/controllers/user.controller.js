@@ -13,7 +13,7 @@ exports.create = async (req, res) => {
       roles: req.body.roles,
     });
 
-    await emailService.send(
+    emailService.send(
       req.body.email,
       'Bem vindo à API da copa',
       global.EMAIL_TMPL.replace('{0}', req.body.name),
