@@ -4,6 +4,11 @@ const repository = require('../repositories/player.repository');
 exports.get = async (req, res) => {
   try {
     const data = await repository.get();
+
+    if (data.length === 0) {
+      return res.status(HTTPstatus.NO_CONTENT).end();
+    }
+
     return res.status(HTTPstatus.OK).send(data);
   } catch (e) {
     return res.status(HTTPstatus.INTERNAL_SERVER_ERROR).send({
@@ -15,6 +20,11 @@ exports.get = async (req, res) => {
 exports.getByName = async (req, res) => {
   try {
     const data = await repository.getByName(req.params.name);
+
+    if (!data) {
+      return res.status(HTTPstatus.NO_CONTENT).end();
+    }
+
     return res.status(HTTPstatus.OK).send(data);
   } catch (e) {
     return res.status(HTTPstatus.INTERNAL_SERVER_ERROR).send({
@@ -26,6 +36,11 @@ exports.getByName = async (req, res) => {
 exports.getById = async (req, res) => {
   try {
     const data = await repository.getById(req.params.id);
+
+    if (!data) {
+      return res.status(HTTPstatus.NO_CONTENT).end();
+    }
+
     return res.status(HTTPstatus.OK).send(data);
   } catch (e) {
     return res.status(HTTPstatus.INTERNAL_SERVER_ERROR).send({

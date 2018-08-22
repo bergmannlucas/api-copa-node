@@ -10,12 +10,17 @@ const schema = new Schema({
   shirtNumber: {
     type: String,
     required: true,
+    validate: {
+      validator: (v) => {
+        return /^[1-9]{1}[0-9]{0,1}$/.test(v);
+      },
+    },
   },
   position: {
     type: String,
     required: true,
     enum: ['Goleiro', 'Lateral', 'Zagueiro', 'Volante', 'Meio-Campo', 'Atacante'],
-    default: 'Goleiro'
+    default: 'Goleiro',
   },
 });
 

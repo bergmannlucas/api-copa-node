@@ -1,7 +1,7 @@
 const HTTPstatus = require('http-status');
 const md5 = require('md5');
 const repository = require('../repositories/user.repository');
-const emailService = require('../services/email.service');
+// const emailService = require('../services/email.service');
 const authService = require('../services/auth.service');
 
 exports.create = async (req, res) => {
@@ -13,11 +13,13 @@ exports.create = async (req, res) => {
       roles: req.body.roles,
     });
 
-    //emailService.send(
-    //  req.body.email,
-    //  'Bem vindo à API da copa',
-    //  global.EMAIL_TMPL.replace('{0}', req.body.name),
-    //);
+    /*
+    emailService.send(
+      req.body.email,
+      'Bem vindo à API da copa',
+      global.EMAIL_TMPL.replace('{0}', req.body.name),
+    );
+    */
 
     return res.status(HTTPstatus.CREATED).send({
       message: 'Usuário cadastrado com sucesso!',

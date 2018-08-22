@@ -15,7 +15,7 @@ exports.getByName = async (name) => {
 };
 
 exports.getById = async (id) => {
-  const res = await Player.findById(id);
+  const res = await Player.findById(id, 'name shirtNumber position');
   return res;
 };
 
@@ -26,13 +26,17 @@ exports.create = async (data) => {
 
 exports.update = async (id, data) => {
   await Player
-    .findByIdAndUpdate(id, {
-      $set: {
-        name: data.name,
-        shirtNumber: data.shirtNumber,
-        position: data.position,
+    .findByIdAndUpdate(
+      id, {
+        $set: {
+          name: data.name,
+          shirtNumber: data.shirtNumber,
+          position: data.position,
+        },
+      }, {
+        runValidators: true,
       },
-    });
+    );
 };
 
 exports.delete = async (id) => {
