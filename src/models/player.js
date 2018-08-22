@@ -22,6 +22,13 @@ const schema = new Schema({
     enum: ['Goleiro', 'Lateral', 'Zagueiro', 'Volante', 'Meio-Campo', 'Atacante'],
     default: 'Goleiro',
   },
+  team: {
+    type: Schema.Types.ObjectId,
+    ref: 'Team',
+    required: true,
+  },
 });
+
+schema.index({ shirtNumber: 1, team: 1 }, { unique: true });
 
 module.exports = mongoose.model('Player', schema);

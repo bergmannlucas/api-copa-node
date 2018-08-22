@@ -3,19 +3,25 @@ const mongoose = require('mongoose');
 const Player = mongoose.model('Player');
 
 exports.get = async () => {
-  const res = await Player.find({}, 'name shirtNumber position');
+  const res = await Player
+    .find({}, 'name shirtNumber position team')
+    .populate('team', 'name stadium -_id');
   return res;
 };
 
 exports.getByName = async (name) => {
-  const res = await Player.findOne({
-    name,
-  }, 'name shirtNumber position');
+  const res = await Player
+    .findOne({
+      name,
+    }, 'name shirtNumber position team')
+    .populate('team', 'name stadium -_id');
   return res;
 };
 
 exports.getById = async (id) => {
-  const res = await Player.findById(id, 'name shirtNumber position');
+  const res = await Player
+    .findById(id, 'name shirtNumber position team')
+    .populate('team', 'name stadium -_id');
   return res;
 };
 
