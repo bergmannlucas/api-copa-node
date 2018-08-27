@@ -1,0 +1,14 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Node.js API - Copa Stefanini Hackaton",
+    "description": "API construída just 4fun",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/"
+}

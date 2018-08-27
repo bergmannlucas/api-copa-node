@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./config/swagger');
 const config = require('./config');
 
 const app = express();
@@ -35,5 +37,7 @@ app.use('/', indexRoute);
 app.use('/players', playerRoute);
 app.use('/teams', teamRoute);
 app.use('/users', userRoute);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 module.exports = app;
