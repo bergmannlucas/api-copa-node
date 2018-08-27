@@ -36,10 +36,28 @@ exports.update = async (id, data) => {
       $set: {
         name: data.name,
         stadium: data.stadium,
+        players: data.players,
+      },
+    });
+};
+
+exports.pushPlayers = async (id, data) => {
+  await Team
+    .findByIdAndUpdate(id, {
+      $push: {
+        players: data,
       },
     });
 };
 
 exports.delete = async (id) => {
   await Team.findByIdAndRemove(id);
+};
+
+exports.getPlayersList = async (id) => {
+  const res = await Team
+    .findById(id, 'players -_id')
+    .populate('players', 'name shirtNumber position -_id');
+
+  return res.players;
 };

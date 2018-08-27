@@ -1,5 +1,6 @@
 const HTTPstatus = require('http-status');
 const repository = require('../repositories/player.repository');
+const teamRepository = require('../repositories/team.repository');
 
 exports.get = async (req, res) => {
   try {
@@ -51,7 +52,19 @@ exports.getById = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    await repository.create(req.body);
+    const playersList = await teamRepository.getPlayersList(req.body.team);
+
+    if (playersList.length === 11) {
+      return res.status(HTTPstatus.OK).send({
+        message: 'O time já possui 11 jogadores!',
+      });
+    }
+
+    const playerInserted = await repository.create(req.body);
+
+    await teamRepository
+      .pushPlayers(playerInserted.team, playerInserted._id);
+
     return res.status(HTTPstatus.CREATED).send({
       message: 'Jogador cadastrado com sucesso!',
     });

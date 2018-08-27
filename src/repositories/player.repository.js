@@ -27,7 +27,8 @@ exports.getById = async (id) => {
 
 exports.create = async (data) => {
   const player = new Player(data);
-  await player.save();
+  const result = await player.save();
+  return result;
 };
 
 exports.update = async (id, data) => {
@@ -38,6 +39,7 @@ exports.update = async (id, data) => {
           name: data.name,
           shirtNumber: data.shirtNumber,
           position: data.position,
+          team: data.team,
         },
       }, {
         runValidators: true,

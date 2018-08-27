@@ -1,4 +1,5 @@
 const HTTPstatus = require('http-status');
+const _ = require('lodash');
 const repository = require('../repositories/team.repository');
 
 exports.get = async (req, res) => {
@@ -88,4 +89,32 @@ exports.delete = async (req, res) => {
       data: e,
     });
   }
+};
+
+/**
+ * Caso o time nao possua 11 jogadores (com 1 goleiro) ele nao estara apto para jogar
+ */
+exports.teamCanPlay = async (req, res) => {
+  const playersList = await repository.getPlayersList(req.params.id);
+
+  if (playersList.length !== 11) {
+    return res.status(HTTPstatus.OK).send({
+      status: false,
+      message: 'O time necessita de 11 jogadores para jogar!',
+    });
+  }
+
+  const goalkeepersList = _.filter(playersList, { position: 'Goleiro' });
+
+  if (goalkeepersList.length !== 1) {
+    return res.status(HTTPstatus.OK).send({
+      status: false,
+      message: 'O time deve possuir 1 goleiro!',
+    });
+  }
+
+  return res.status(HTTPstatus.OK).send({
+    status: true,
+    message: 'O time está apto para jogar!',
+  });
 };
