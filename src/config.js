@@ -1,8 +1,16 @@
-global.SALT_KEY = 'f6ds6fds-5634-23fs-546g-23cd43nfr3i4';
+require('dotenv').config();
+
+global.SALT_KEY = process.env.SECRET;
 global.EMAIL_TMPL = 'Olá, <strong>{0}</strong>, seja bem vindo à api da copa!';
 
+function getConnectionString() {
+  return process.argv[2] === 'dev'
+    ? process.env.DB_LOCAL
+    : process.env.DB_DOCKER;
+}
+
 module.exports = {
-  connectionString: 'mongodb://root:lucas1@ds018308.mlab.com:18308/api-copa-node',
+  connectionString: getConnectionString(),
   sendgridKey: 'secret',
   containerConnectionString: 'TBD',
 };

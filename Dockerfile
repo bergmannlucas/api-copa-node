@@ -1,7 +1,7 @@
 FROM node:8
-WORKDIR /app
-COPY package.json /app
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package.json /usr/src/app/
 RUN npm install
-COPY . /app
-CMD node bin/server.js
-EXPOSE 8080
+COPY . /usr/src/app
+EXPOSE 3000
