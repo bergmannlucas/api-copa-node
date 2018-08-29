@@ -5,7 +5,8 @@
   "main": "./bin/server.js",
   "scripts": {
     "start": "node ./bin/server.js prod",
-    "dev": "nodemon ./bin/server.js dev"
+    "dev": "nodemon ./bin/server.js dev",
+    "test": "mocha --recursive"
   },
   "keywords": [],
   "author": "",
@@ -28,10 +29,13 @@
     "swagger-ui-express": "^4.0.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.3"
   }
 }
