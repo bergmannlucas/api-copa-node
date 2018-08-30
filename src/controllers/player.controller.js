@@ -69,7 +69,6 @@ exports.create = async (req, res) => {
       message: 'Jogador cadastrado com sucesso!',
     });
   } catch (e) {
-    console.log(e);
     return res.status(HTTPstatus.INTERNAL_SERVER_ERROR).send({
       message: 'Falha ao cadastrar jogador!',
     });

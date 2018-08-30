@@ -59,5 +59,7 @@ exports.getPlayersList = async (id) => {
     .findById(id, 'players -_id')
     .populate('players', 'name shirtNumber position -_id');
 
-  return res.players;
+  return res
+    ? res.players
+    : null;
 };

@@ -97,6 +97,10 @@ exports.delete = async (req, res) => {
 exports.teamCanPlay = async (req, res) => {
   const playersList = await repository.getPlayersList(req.params.id);
 
+  if (!playersList) {
+    return res.status(HTTPstatus.NO_CONTENT).end();
+  }
+
   if (playersList.length !== 11) {
     return res.status(HTTPstatus.OK).send({
       status: false,

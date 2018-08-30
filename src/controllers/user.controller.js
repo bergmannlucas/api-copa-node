@@ -6,6 +6,14 @@ const authService = require('../services/auth.service');
 
 exports.create = async (req, res) => {
   try {
+    const data = await repository.getByEmail(req.body.email);
+
+    if (data) {
+      return res.status(HTTPstatus.CONFLICT).send({
+        message: 'Já existe um usuário com este email!',
+      });
+    }
+
     await repository.create({
       name: req.body.name,
       email: req.body.email,
