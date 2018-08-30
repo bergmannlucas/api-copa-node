@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./bin/server.js prod",
     "dev": "nodemon ./bin/server.js dev",
-    "test": "mocha --recursive --exit"
+    "test": "mocha --recursive --exit",
+    "test-travis": "./node_modules/istanbul/lib/cli.js cover mocha --recursive --exit"
   },
   "keywords": [],
   "author": "",
