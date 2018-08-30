@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./bin/server.js prod",
     "dev": "nodemon ./bin/server.js dev",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive --exit"
   },
   "keywords": [],
   "author": "",

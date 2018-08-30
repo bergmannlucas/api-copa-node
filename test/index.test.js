@@ -6,9 +6,7 @@ chai.use(require('chai-http'));
 
 const app = require('../src/app');
 
-describe('API endpoint /', function () {
-  this.timeout(5000);
-
+describe('API endpoint /', () => {
   before(() => {
 
   });

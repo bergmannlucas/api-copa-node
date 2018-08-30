@@ -12,7 +12,7 @@ const Team = mongoose.model('Team');
 
 let token;
 
-describe('API endpoint /teams unauthorized', function () {
+describe('API endpoint /teams unauthorized', () => {
   before(async () => {
 
   });
@@ -74,7 +74,7 @@ describe('API endpoint /teams unauthorized', function () {
   });
 });
 
-describe('API endpoint /teams authorized but no data', function () {
+describe('API endpoint /teams authorized but no data', () => {
   before(async () => {
     // Cria usuario
     await chai.request(app)
