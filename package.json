@@ -7,8 +7,7 @@
     "start": "node ./bin/server.js prod",
     "dev": "nodemon ./bin/server.js dev",
     "test": "mocha --recursive --exit",
-    "coverage": "node_modules/.bin/istanbul cover _mocha -- -R spec",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+    "coverage": "istanbul cover _mocha -- ./test/* --recursive --exit"
   },
   "keywords": [],
   "author": "",
@@ -38,7 +37,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "istanbul": "^0.4.5",
+    "istanbul": "^1.0.0-alpha.2",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.3"
   }
