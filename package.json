@@ -7,7 +7,8 @@
     "start": "node ./bin/server.js prod",
     "dev": "nodemon ./bin/server.js dev",
     "test": "mocha --recursive --exit",
-    "test-travis": "./node_modules/istanbul/lib/cli.js cover mocha --recursive --exit"
+    "coverage": "node_modules/.bin/istanbul cover _mocha -- -R spec",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "keywords": [],
   "author": "",
