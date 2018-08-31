@@ -16,4 +16,4 @@
 
 | [![twitter/lucasbergmann_](https://s.gravatar.com/avatar/8f2f2aec61c30a8842b4e5691e1181a2?s=80)](https://twitter.com/lucasbergmann_ "Follow @lucasbergmann_ on Twitter") |
 |---|
-| [Lucas Bergmann](https://twitter.com/lucasbermgnan) |
+| [Lucas Bergmann](https://twitter.com/lucasbergmann_) |
